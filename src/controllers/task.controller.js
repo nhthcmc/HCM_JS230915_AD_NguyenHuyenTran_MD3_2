@@ -1,6 +1,6 @@
 import taskModel from "../models/task.model";
 
-export const taskController = {
+export default {
     create: async (req, res) => {
         try {
             const { status, message, data } = await taskModel.create(req.body);

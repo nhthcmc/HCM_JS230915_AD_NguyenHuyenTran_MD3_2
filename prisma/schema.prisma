@@ -9,14 +9,14 @@ datasource db {
 
 model task {
     id     Int    @id @default(autoincrement())
-    name   String
-    status String
+    name   String @db.VarChar(225)
+    status String @db.VarChar(225)
 }
 
 model members {
     id       Int      @id @default(autoincrement())
     userName String   @unique @db.VarChar(50)
-    password String   @db.Char(255)
+    password String   @db.VarChar(50)
     role     UserRole @default(user)
 }
 

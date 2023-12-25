@@ -2,14 +2,13 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient()
 
 export default {
-    findUser: async function (userName) {
+    findUser: async (userName) => {
         try {
             let user = await prisma.users.findFirst({
                 where: {
                     userName: userName,
                 },
             })
-
             return {
                 status: true,
                 data: user
@@ -17,12 +16,11 @@ export default {
 
         } catch (err) {
             console.log(err);
-            // let message = null;
-            // return {
-            //     status: false,
-            //     message: message ? message : "modelError",
-            //     data: null
-            // }
+            return {
+                status: false,
+                message: "Error",
+                data: null
+            }
         }
     }
 }

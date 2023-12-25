@@ -2,54 +2,77 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient()
 
 export const taskModel = {
-    create: async (taskData) => {
-        let task = await prisma.task.create({
-            data: {
-                ...taskData
+    create: async (name) => {
+        try {
+            const task = await prisma.task.create({
+                data: {
+                    name: name,
+                },
+            })
+            return {
+                status: true,
+                message: "Created successfully!",
+                data: task
             }
-        })
-        return {
-            status: true,
-            message: "Created successfully!",
-            data: task
+        } catch (err) {
+            console.log('err', err)
+            return {
+                status: false,
+                message: "Model Error",
+                data: null
+            }
         }
-
     },
     findAll: async () => {
-        let data = await prisma.task.findMany()
-        return {
-            status: true,
-            message: "Found all tasks!",
-            data
-        }
-
-    },
-    update: async (id, taskData) => {
-        let data = await prisma.task.update({
-            where: {
-                id: Number(id)
-            },
-            data: {
-                ...taskData
+        try {
+            let task = await prisma.task.findMany()
+            return {
+                status: true,
+                message: "Found all tasks!",
+                data: task
             }
-        })
-        return {
-            status: true,
-            message: "Updated successfully!",
-            data
+        } catch (err) {
+            console.log('Error:', err);
+            return {
+                status: false,
+                message: "Model Error",
+                data: null
+            }
+        }
+    },
+    update: async (id, name) => {
+        try {
+            let task = await prisma.task.update({
+                where: {
+                    id: Number(id)
+                },
+                data: {
+                    name: name,
+                }
+            })
+            return {
+                status: true,
+                message: "Updated successfully!",
+                data: task
+            }
+        } catch (err) {
+            console.log(err);
         }
     },
     delete: async (id) => {
-        let data = await prisma.task.delete({
-            where: {
-                id: Number(id)
+        try {
+            let task = await prisma.task.delete({
+                where: {
+                    id: id
+                }
+            })
+            return {
+                status: true,
+                message: "Deleted successfully!",
+                data: task
             }
-        })
-        return {
-            status: true,
-            message: "Deleted successfully!",
-            data
+        } catch (err) {
+            console.log(err);
         }
     }
-
 }
