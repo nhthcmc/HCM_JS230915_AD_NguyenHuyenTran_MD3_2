@@ -7,11 +7,11 @@ export default function Login() {
         e.preventDefault();
         try {
             let data = {
-                username: e.target.username.value,//
+                username: e.target.username.value,
                 password: e.target.password.value
             }
             let result = await apis.authen.login(data)
-            localStorage.setItem('token', result.data.token)//
+            localStorage.setItem('userRole', result.data.data.data.role)
             window.location.href = "/"
 
         } catch (err) {
