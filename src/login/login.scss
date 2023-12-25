@@ -1,0 +1,47 @@
+.login {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+
+    .signin {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+
+        .title {
+            display: flex;
+        }
+
+        .form {
+            display: flex;
+            flex-direction: column;
+
+            form {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+                label {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+
+                    span {
+                        text-transform: uppercase;
+                        font-weight: bold;
+                    }
+                }
+
+                button {
+                    background-color: black;
+                    color: white;
+                    cursor: pointer;
+                    font-size: large;
+                    padding: 5px;
+                    border-radius: 5px;
+                }
+            }
+        }
+    }
+}
