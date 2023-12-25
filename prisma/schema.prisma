@@ -4,5 +4,23 @@ generator client {
 
 datasource db {
     provider = "mysql"
-    url = "mysql://root:@127.0.0.1:3306/"
+    url      = "mysql://root:@127.0.0.1:3306/advanced"
+}
+
+model task {
+    id     Int    @id @default(autoincrement())
+    name   String
+    status String
+}
+
+model members {
+    id       Int      @id @default(autoincrement())
+    userName String   @unique @db.VarChar(50)
+    password String   @db.Char(255)
+    role     UserRole @default(user)
+}
+
+enum UserRole {
+    admin
+    user
 }

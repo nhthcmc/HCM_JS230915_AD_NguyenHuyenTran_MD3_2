@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "dev": "nodemon --exec babel-node ./src/app.js",
+    "dev": "nodemon --exec babel-node ./src/index.js",
     "dbpush": "prisma db push",
     "dbpull": "prisma db pull",
     "dbm": "prisma migrate dev"
@@ -13,16 +13,19 @@
   "license": "ISC",
   "dependencies": {
     "@prisma/client": "^5.7.0",
+    "axios": "^1.6.2",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "prisma": "^5.7.0"
+    "prisma": "^5.7.0",
+    "ts-node": "^10.9.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.23.4",
     "@babel/core": "^7.23.6",
     "@babel/node": "^7.22.19",
     "@babel/preset-env": "^7.23.6",
+    "@types/express": "^4.17.21",
     "nodemon": "^3.0.2"
   }
 }
